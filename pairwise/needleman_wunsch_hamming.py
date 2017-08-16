@@ -12,11 +12,12 @@ def match_score(posA,posB):
   else:
     return -1.0
 
-def align(seqA,seqB):
-  print (gap_penalty)
+def align(seqA,seqB,print_dynamic_matrix = False):
+  # Initiating variables
   m, n = len(seqA)+1, len(seqB)+1
   S = np.zeros((m,n))
   trace = np.zeros((m,n,2))
+  # Set up dynamic programming matrices
   S[0,0] = 0.
   trace[0,0,:] = (0.,0.)
   for i in range(1,m):
@@ -25,6 +26,7 @@ def align(seqA,seqB):
   for j in range(1,n):
     S[0,j] = gap_penalty * j
     trace[0,j,:] = (0.,-1.)
+  # Set up dynamic programming matrices
   for i in range(1,m):
     for j in range(1,n):
       match = S[i-1][j-1] + match_score(seqA[i-1],seqB[j-1])
@@ -37,7 +39,9 @@ def align(seqA,seqB):
         trace[i,j,:] = (-1,0)
       else:
         trace[i,j,:] = (0,-1)
-  print("Best score: " + str(S[n-1,m-1]))
+  if print_dynamic_matrix:
+      print_dynamic(seqA,seqB,S)
+  print("Best score: " + str(S[m-1,n-1]))
   return format_alignment(seqA,seqB,trace)
 
 def format_alignment(seqA,seqB,trace):
@@ -68,15 +72,30 @@ def print_alignment(seqA,seqB):
   print(seqA)
   print(seqB)
 
+def print_dynamic(seqA,seqB,dpm):
+  seqA,seqB = "-" + seqA, "-" + seqB
+  m,n = len(seqA),len(seqB)
+  print '{:^5}'.format(" "),
+  for j in range(n):
+    print '{:^5}'.format(seqB[j]),
+  print
+  for i in range(m):
+    print '{:^5}'.format(seqA[i]),
+    for j in range(n):
+        print '{:5.1f}'.format(dpm[i,j]),
+    print
+  print
+
 def main():
   parser = argparse.ArgumentParser()
   parser.add_argument('seqA', help='The First Sequence To Align')
   parser.add_argument('seqB', help='The Second Sequence To Align')
   parser.add_argument('--gap_penalty', type = float, default=-1., help='Gap Penalty')
+  parser.add_argument('--print_dynamic_matrix', action='store_true', help='Print the dynamic programming matrix')
   args = parser.parse_args()
   global gap_penalty
   gap_penalty = args.gap_penalty
-  seqA,seqB = align(args.seqA,args.seqB)
+  seqA,seqB = align(args.seqA,args.seqB,args.print_dynamic_matrix)
   print_alignment(seqA,seqB)
 
 if __name__ == "__main__":
