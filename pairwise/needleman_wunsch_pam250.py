@@ -64,13 +64,6 @@ def format_alignment(seqA,seqB,trace):
       outB = seqB[j] + outB
   return outA,outB
 
-def hamming(seqA,seqB,pos):
-  seqA = seqA[max(pos,0):min(len(seqB)+pos,len(seqA))]
-  seqB = seqB[max(-pos,0):max(len(seqA)-pos,len(seqB))]
-  # print seqA,seqB,pos, max(-pos,0), max(len(seqA)-pos,len(seqA))
-  matches = sum(el_a == el_b for el_a, el_b in zip(seqA, seqB))
-  return matches
-
 def print_alignment(seqA,seqB):
   print(seqA)
   print(seqB)

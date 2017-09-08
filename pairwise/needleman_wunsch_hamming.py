@@ -14,21 +14,21 @@ def match_score(posA,posB):
 
 def align(seqA,seqB,print_dynamic_matrix = False):
   # Initiating variables
-  m, n = len(seqA)+1, len(seqB)+1
-  S = np.zeros((m,n))
-  trace = np.zeros((m,n,2))
+  n, m = len(seqA)+1, len(seqB)+1
+  S = np.zeros((n,m))
+  trace = np.zeros((n,m,2))
   # Set up dynamic programming matrices
   S[0,0] = 0.
   trace[0,0,:] = (0.,0.)
-  for i in range(1,m):
+  for i in range(1,n):
     S[i,0] = gap_penalty * i
     trace[i,0,:] = (-1.,0.)
-  for j in range(1,n):
+  for j in range(1,m):
     S[0,j] = gap_penalty * j
     trace[0,j,:] = (0.,-1.)
   # Set up dynamic programming matrices
-  for i in range(1,m):
-    for j in range(1,n):
+  for i in range(1,n):
+    for j in range(1,m):
       match = S[i-1][j-1] + match_score(seqA[i-1],seqB[j-1])
       delete = S[i-1][j] + gap_penalty
       insert = S[i][j-1] + gap_penalty
@@ -60,13 +60,6 @@ def format_alignment(seqA,seqB,trace):
     else:
       outB = seqB[j] + outB
   return outA,outB
-
-def hamming(seqA,seqB,pos):
-  seqA = seqA[max(pos,0):min(len(seqB)+pos,len(seqA))]
-  seqB = seqB[max(-pos,0):max(len(seqA)-pos,len(seqB))]
-  # print seqA,seqB,pos, max(-pos,0), max(len(seqA)-pos,len(seqA))
-  matches = sum(el_a == el_b for el_a, el_b in zip(seqA, seqB))
-  return matches
 
 def print_alignment(seqA,seqB):
   print(seqA)
