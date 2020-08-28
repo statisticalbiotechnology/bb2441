@@ -5,6 +5,6 @@ Here we store material you should read prior to the lectures on Alignments. The 
 * Introduction to Sequence Alignments
 * [Algorithms for Pairwise Alignments](algorithm.md)
 * Code for Pairwise Alignments
-* Protein Sequence Alignments
+* [Protein Sequence Alignments](protein.md)
 * Multiple Sequence Alignments
 * Sequence Retrieval
