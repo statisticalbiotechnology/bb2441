@@ -6,4 +6,5 @@ Before the lecture:
 * Watch the online lecture on [alignment algorithms](https://youtu.be/ACgY8zI0utk). You can find a copy of the slides [here](slides/Algorithms_for_sequence_alignments.pdf)
 * Check the [notebook](https://mybinder.org/v2/gh/statisticalbiotechnology/bb2441/master?filepath=pairwise%2Fpairwise.ipynb
 ) on pairwise alignments
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/statisticalbiotechnology/bb2441/master?filepath=pairwise%2Fpairwise.ipynb)
 * Pose at least one question in the appropriate canvas thread.
