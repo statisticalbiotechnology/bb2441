@@ -1,4 +1,4 @@
-# Multiple Sequence Alignments
+# Sequence Retrieval
 
 Before the lecture:
 
