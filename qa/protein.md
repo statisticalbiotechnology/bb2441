@@ -43,7 +43,9 @@
 
 
 * What is the point of rounding the values up to integers for the scoring matrices? If the calculations are done using a computer would it not be better to just round the final score instead for more correct numbers?
+
 * Lambdas are given in order to round the result of the equation [d(a, b)] can be rounded with as little error as possible to the next integer value, but how do you practically decide which lambda is the best for your matrix? do all matrices have their assigned lambdas and, if so, how were they assigned?
+
 *  Regarding building your own substitution matrix: They mention in the book that a pseudocount is used to account for substitutions that don't appear in the training set. These substitutions  are given a value of 1 divided by the number of aligned positions. However, I tried applying this to the example in figure 5.7 and couldn't reach the same conclusions as them. How exactly did they calculate the values in the substitution matrix?
 
 ## Gaps
@@ -64,11 +66,10 @@
 
 ## Score of full Alignments
 * The Eddy article states that the alignment score is the sum of individual log-odds scores for each residue pair, assuming each pair is statistically independent of the others. How much can this assumed independence affect the resulting alignment score? Should this be taken into account?
+
 * In the article when they say that a certain program for sequence alignment is optimal for detecting homologous DNA alignments that are x% identical do they mean in terms of speed or in terms of number of alignments found with that percentage of homologous matches, or both?
 
-* I read that PAM matrices have some limitations (for example that they incorrectly assume that all sites are equally mutable and that they are based on biased data). My questions follow:
-
-How will this affect the accuracy of the alignment?
+* I read that PAM matrices have some limitations (for example that they incorrectly assume that all sites are equally mutable and that they are based on biased data). My questions follow: How will this affect the accuracy of the alignment?
 Does this mean that BLOSUM matrices are preferred over PAM matrices?
 When will a PAM matrix be chosen over a BLOSUM matrix?
 
