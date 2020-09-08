@@ -9,3 +9,5 @@
 * Do we use the mean of the scores of (a b) and (a c)? And which path in the dp matrix is chosen?
 
 * In what way is doing the progressive alignment more efficient than doing a pairwise alignment in the first 2 sequences and then align that with the 3rd sequence and so on?
+
+* If the sequences are not so similar to each other , does Progressive Alignment still fit for them ?
